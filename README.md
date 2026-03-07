@@ -68,6 +68,22 @@ alembic revision --autogenerate -m "Description of your changes"
 alembic upgrade head
 ```
 
+## 🔌 API Client Generation (OpenAPI)
+
+Since FastAPI automatically generates an OpenAPI specification, we use `@hey-api/openapi-ts` to automatically generate strongly-typed TypeScript clients and interfaces for your Vue frontend.
+
+### Generating the Client
+
+1. Ensure your backend is running locally (`cd backend && uvicorn main:app --reload --host 127.0.0.1 --port 8000`).
+2. Open a terminal in the `frontend` directory and run:
+
+```bash
+cd frontend
+npm run generate-api
+```
+
+This will fetch the `openapi.json` from the backend and populate the `frontend/src/api/` folder with exported services and models you can import directly into your `.vue` components.
+
 ## �📁 Project Structure
 
 *   **/frontend**: Vue 3 application initialized with Vite.

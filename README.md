@@ -47,7 +47,28 @@ npm run dev
 ```
 *Vite will start the dev server (usually on `http://localhost:5173`). Vite is configured to proxy requests starting with `/api` to the backend running on port `8000`. So, you don't have to worry about CORS during development!*
 
-## 📁 Project Structure
+## �️ Database Migrations (Alembic)
+
+This project uses SQLAlchemy for the ORM and Alembic for database migrations. The database is configured as a local SQLite database (`app.db`).
+
+### Running Migrations
+
+To apply existing migrations and create the database tables:
+```bash
+cd backend
+alembic upgrade head
+```
+
+### Generating New Migrations
+
+After modifying or adding new SQLAlchemy models in `backend/models.py`, generate a new migration script and apply it:
+```bash
+cd backend
+alembic revision --autogenerate -m "Description of your changes"
+alembic upgrade head
+```
+
+## �📁 Project Structure
 
 *   **/frontend**: Vue 3 application initialized with Vite.
     *   `src/App.vue`: Contains the example API fetch logic.
